@@ -2,20 +2,20 @@
 import { gql } from '@apollo/client';
 import { client } from "@/lib/Apollo/apollo";
 
-export default function Blog({posts}) {
-    console.log(JSON.stringify(posts));
+import BlogCards from '@/components/Blogs/BlogCards';
+
+export default function Blog(props) {
+  const { posts } = props;
     return (
         <>
-            <section className="">
-                blogs
-            </section>
+          <BlogCards posts={posts} />
         </>
     );
 }
 
 export async function getStaticProps() {
     
-    const result = await client.query({
+    const {data} = await client.query({
         query: gql`
       query GetAllPosts {
         posts {
@@ -26,7 +26,7 @@ export async function getStaticProps() {
             date
             featuredImage {
               node {
-                uri
+                mediaItemUrl
               }
             }
           }
@@ -35,13 +35,11 @@ export async function getStaticProps() {
       `,
     });
 
-    // const blogs = response.data.posts.map(({nodes}) => nodes);
-
-    console.log('blogs', result);
+    // console.log(data);
     
     return {
         props: {
-            posts: result.data.posts.nodes,
+            posts: data.posts.nodes,
         }
     };
 }
