@@ -3,7 +3,7 @@ import { formatDate } from "../CommonComponents/CommonFunc";
 export default function BlogCards(props) {
     const { posts } = props;
 
-    console.log(posts);
+    // console.log(posts);
 
     return (
         <>
@@ -20,7 +20,7 @@ export default function BlogCards(props) {
                                     <div className="text-[14px] font-bold text-[#9fa9ca] mb-[15px]">{formatDate(data.date)}</div>
                                     <div className="text-[24px]">{data.title}</div>
                                     <div className="mt-[30px]">
-                                        <a href={data.uri} className="text-[#1c75ba] text-[18px] font-bold inline-flex items-center gap-x-[5px] transition-all hover:gap-x-[8px]">
+                                        <a href={`blog/${data.uri}`} className="text-[#1c75ba] text-[18px] font-bold inline-flex items-center gap-x-[5px] transition-all hover:gap-x-[8px]">
                                             <span>Learn More</span>
                                             <img src="/images/common/link-arrow.png" alt="Learn More" className="w-[15px]" />
                                         </a>
