@@ -41,6 +41,17 @@ export async function getStaticProps() {
                 whatWeDoImageName
               }
 
+              ourExpertiseTitle
+              ourExpertiseDescription
+              ourExpertiseRepeater {
+                image {
+                  node {
+                    mediaItemUrl
+                  }
+                }
+                imageName
+              }
+
             }
           }
         }
